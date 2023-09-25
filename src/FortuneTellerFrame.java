@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.Random;
 
 public class FortuneTellerFrame extends JFrame
 {
@@ -20,6 +21,11 @@ public class FortuneTellerFrame extends JFrame
     JButton quitBtn;
     JButton fortuneBtn;
 
+    //For random fortune
+    Random fndFort = new Random();
+
+
+
     public FortuneTellerFrame()
     {
         mainPnl = new JPanel();
@@ -35,18 +41,25 @@ public class FortuneTellerFrame extends JFrame
         mainPnl.add(controlPnl, BorderLayout.SOUTH);
 
         add(mainPnl);
+        setSize(400, 600);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
     }
 
     private void createIconPnl()
     {
         iconPnl = new JPanel();
         FTIcon = new ImageIcon("src/FTIcon.jpg");
+        Image tellerIcon = FTIcon.getImage();
+        Image modifiedFTIcon = tellerIcon.getScaledInstance(200,250, Image.SCALE_DEFAULT);
+        FTIcon = new ImageIcon(modifiedFTIcon);
+
 
         fortTeller = new JLabel("Welcome to the Fortune Teller!", FTIcon, JLabel.CENTER);
         fortTeller.setFont(new Font("TimesRoman", Font.PLAIN, 20));
 
         fortTeller.setVerticalTextPosition((JLabel.BOTTOM));
-        fortTeller.setVerticalTextPosition((JLabel.CENTER));
+        fortTeller.setHorizontalTextPosition((JLabel.CENTER));
 
         iconPnl.add(fortTeller);
 
@@ -56,6 +69,7 @@ public class FortuneTellerFrame extends JFrame
     {
         displayPnl = new JPanel();
         fortuneTA = new JTextArea(10, 25);
+        fortuneTA.setEditable(false);
         scroller = new JScrollPane(fortuneTA);
         displayPnl.add(scroller);
     }
@@ -68,6 +82,11 @@ public class FortuneTellerFrame extends JFrame
         //Name buttons
         fortuneBtn = new JButton("Read My Fortune!");
         fortuneBtn.setFont(new Font("Serif", Font.PLAIN, 24));
+        fortuneBtn.addActionListener((ActionEvent ae)->
+        {
+
+
+        });
 
 
         quitBtn = new JButton("Quit");
