@@ -22,7 +22,16 @@ public class FortuneTellerFrame extends JFrame
     JButton fortuneBtn;
 
     //For random fortune
-    Random fndFort = new Random();
+    Random rndFort = new Random();
+
+    //Fortunes
+    String [] fortunes = {"Someone will invite you to a karaoke party.", "Never gonna give you up, never gonna let you down",
+            "A golden egg of opportunity will come to you this month.", "Go take a rest, you deserve it.", "Good news will come by mail.",
+            "Be careful where you step.", "You are cleverly disguised as a responsible adult.", "Big journeys begin with a single step.",
+            "You will get a high five from the bearcat today.", "An alien of some sort will be appearing shortly.", "Change can hurt, but it leads to a path of something better.",
+            "Wealth awaits you very soon."
+    };
+
 
 
 
@@ -55,7 +64,7 @@ public class FortuneTellerFrame extends JFrame
         FTIcon = new ImageIcon(modifiedFTIcon);
 
 
-        fortTeller = new JLabel("Welcome to the Fortune Teller!", FTIcon, JLabel.CENTER);
+        fortTeller = new JLabel("Welcome to The Fortune Teller!", FTIcon, JLabel.CENTER);
         fortTeller.setFont(new Font("TimesRoman", Font.PLAIN, 20));
 
         fortTeller.setVerticalTextPosition((JLabel.BOTTOM));
@@ -68,7 +77,7 @@ public class FortuneTellerFrame extends JFrame
     private void createDisplayPnl()
     {
         displayPnl = new JPanel();
-        fortuneTA = new JTextArea(10, 25);
+        fortuneTA = new JTextArea(15, 35);
         fortuneTA.setEditable(false);
         scroller = new JScrollPane(fortuneTA);
         displayPnl.add(scroller);
@@ -84,7 +93,9 @@ public class FortuneTellerFrame extends JFrame
         fortuneBtn.setFont(new Font("Serif", Font.PLAIN, 24));
         fortuneBtn.addActionListener((ActionEvent ae)->
         {
+            int f = rndFort.nextInt(fortunes.length);
 
+            fortuneTA.append(fortunes[f]+"\n");
 
         });
 
