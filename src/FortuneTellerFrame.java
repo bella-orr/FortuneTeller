@@ -68,7 +68,7 @@ public class FortuneTellerFrame extends JFrame
 
 
         fortTeller = new JLabel("Welcome to The Fortune Teller!", FTIcon, JLabel.CENTER);
-        fortTeller.setFont(new Font("TimesRoman", Font.PLAIN, 20));
+        fortTeller.setFont(new Font("Monospaced", Font.BOLD, 20));
 
         fortTeller.setVerticalTextPosition((JLabel.BOTTOM));
         fortTeller.setHorizontalTextPosition((JLabel.CENTER));
