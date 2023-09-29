@@ -11,7 +11,6 @@ public class FortuneTellerViewer
         frame.setSize(800, 800);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-
         frame.setVisible(true);
     }
 }

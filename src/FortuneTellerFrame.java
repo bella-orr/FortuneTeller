@@ -86,6 +86,7 @@ public class FortuneTellerFrame extends JFrame
         displayPnl.add(scroller);
     }
 
+
     private void createControlPnl()
     {
         controlPnl = new JPanel();
