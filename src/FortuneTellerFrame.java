@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.util.Random;
+import java.util.*;
 
 public class FortuneTellerFrame extends JFrame
 {
@@ -21,9 +21,6 @@ public class FortuneTellerFrame extends JFrame
     JButton quitBtn;
     JButton fortuneBtn;
 
-    //For random fortune
-    Random rndFort = new Random();
-
     //Fortunes
     String [] fortunes = {"Someone will invite you to a karaoke party.", "Never gonna give you up, never gonna let you down",
             "A golden egg of opportunity will come to you this month.", "Go take a rest, you deserve it.", "Good news will come by mail.",
@@ -31,6 +28,12 @@ public class FortuneTellerFrame extends JFrame
             "You will get a high five from the bearcat today.", "An alien of some sort will be appearing shortly.", "Change can hurt, but it leads to a path of something better.",
             "Wealth awaits you very soon."
     };
+
+    //For random fortune
+    Random rndFort = new Random();
+    int oldFort = -1;
+    int curFort = rndFort.nextInt(fortunes.length);
+    boolean sameFort = true;
 
 
 
@@ -91,13 +94,31 @@ public class FortuneTellerFrame extends JFrame
         //Name buttons
         fortuneBtn = new JButton("Read My Fortune!");
         fortuneBtn.setFont(new Font("Serif", Font.PLAIN, 24));
+
+
         fortuneBtn.addActionListener((ActionEvent ae)->
         {
-            int f = rndFort.nextInt(fortunes.length);
 
-            fortuneTA.append(fortunes[f]+"\n");
+            do
+            {
+                if (curFort == oldFort)
+                {
+                    curFort = rndFort.nextInt(fortunes.length);
+                    sameFort = true;
+                }
+
+                else
+                {
+                    oldFort = curFort;
+                    fortuneTA.append(fortunes[oldFort] + "\n");
+                    sameFort = false;
+                }
+            }while(!sameFort);
+
 
         });
+
+
 
 
         quitBtn = new JButton("Quit");
@@ -110,5 +131,7 @@ public class FortuneTellerFrame extends JFrame
 
 
     }
+
+
 
 }
