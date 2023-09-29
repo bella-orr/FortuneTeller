@@ -80,7 +80,7 @@ public class FortuneTellerFrame extends JFrame
     private void createDisplayPnl()
     {
         displayPnl = new JPanel();
-        fortuneTA = new JTextArea(15, 35);
+        fortuneTA = new JTextArea(10, 35);
         fortuneTA.setEditable(false);
         scroller = new JScrollPane(fortuneTA);
         displayPnl.add(scroller);
